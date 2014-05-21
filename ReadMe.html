@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Getting and Cleaning Data Course Project README.md</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Getting and Cleaning Data Course Project README.md</h1>
+
+<h1>How the run_analysis.R script works</h1>
+
+<p>The following points specify the details of the working of run_analysis.R script. </p>
+
+<ul>
+<li><p>The script reads the required data from the textfiles from the &ldquo;test&rdquo; and &ldquo;train&rdquo; folders from the downloaded zip folder 
+and stores them into dataframes named &ldquo;x_test&rdquo;, &ldquo;y_test&rdquo;, &ldquo;x_train&rdquo;, &ldquo;y_train&rdquo;, &ldquo;subject_test&rdquo;, &ldquo;subject_train&rdquo;.</p></li>
+<li><p>Then, we combine the &ldquo;x_train&rdquo; and &ldquo;x_test&rdquo; dataframes vertically. </p></li>
+<li><p>Similarly, we combine, the &ldquo;subject_train&rdquo;, &ldquo;subject_test&rdquo; dataframes and  &ldquo;y_train&rdquo;, &ldquo;y_test&rdquo; dataframes vertically and 
+change the column names for both the combined data frames. </p></li>
+<li><p>Then, we extract only the measurements on the mean and SD for each measurement by pattern matching with grep().
+And, we get the column names of the combined dataframe from the features text file and change the column names.</p></li>
+<li><p>We merge the 3 dataframes vertically to get a &ldquo;data_merge&rdquo; dataframe.</p></li>
+<li><p>We then melt the dataframe using id variables &ldquo;activity&rdquo; and &ldquo;subject&rdquo; in melt() [from reshape2 package].</p></li>
+<li><p>Then, we get the average of each variable for each activity and each subject i.e. summary of the data using dcast() [from reshape2 package].</p></li>
+<li><p>We use descriptive activity names to appropriately name the activities in the data set. This is our final tidy dataset.</p></li>
+</ul>
+
+<h1>For each record in our tidy dataset it is provided:</h1>
+
+<ul>
+<li>Activity identifier </li>
+<li>An identifier of the subject who carried out the experiment.</li>
+<li>A 66-feature vector with time and frequency domain variables. </li>
+<li>Its activity label. </li>
+</ul>
+
+</body>
+
+</html>
+
